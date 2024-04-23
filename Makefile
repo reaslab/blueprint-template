@@ -1,5 +1,6 @@
 .DEFAULT_GOAL := all
 
+PROJECT = ./DemoProject
 
 all : build blueprint
 
@@ -11,3 +12,8 @@ build:
 blueprint:
 	(cd blueprint && inv all)
 
+analyze:
+	(python3 blueprint/blueprint_auto.py -p ${PROJECT})
+
+serve: blueprint
+	(cd blueprint/web && python3 -m http.server)
