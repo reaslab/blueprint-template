@@ -26,18 +26,18 @@ jobs:
       - run: |
           nix develop --command make build
           nix develop --command make blueprint
-          mkdir all-docs && mv .lake/build/doc all-docs/ && mv blueprint/web all-docs/
+          mv .lake/build/doc blueprint/web/
 
       - name: Fix permissions
         run: |
-          chmod -c -R +rX "all-docs" | while read line; do
+          chmod -c -R +rX "blueprint/web/" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: all-docs/
+          path: blueprint/web/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
