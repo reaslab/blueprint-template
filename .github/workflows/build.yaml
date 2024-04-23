@@ -24,7 +24,6 @@ jobs:
           fetch-depth: 2
           lfs: true
       - run: |
-          nix develop --command make build
           nix develop --command make blueprint
           mkdir all-docs && mv .lake/build/doc all-docs/ && mv blueprint/web all-docs/
 

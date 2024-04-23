@@ -4,7 +4,7 @@ in pkgs.mkShell {
   name = "python-venv";
   venvDir = "./.venv";
 
-  packages = with pkgs; [ texliveBasic graphviz pdf2svg elan gnumake ];
+  packages = with pkgs; [ texliveMedium graphviz pdf2svg elan gnumake ];
 
   buildInputs = [
     # A Python interpreter including the 'venv' module is required to bootstrap
