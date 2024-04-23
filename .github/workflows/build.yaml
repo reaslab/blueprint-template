@@ -1,0 +1,37 @@
+on:
+  push:
+    branches: [main]
+jobs:
+  build-oci-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.TOKEN }}
+          submodules: "recursive"
+
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            accept-flake-config = true
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/flake-checker-action@main
+
+      - run: |
+          nix develop --command make build
+          nix develop --command make blueprint
+          mkdir all-docs && mv .lake/build/doc all-docs/ && mv blueprint/web all-docs/
+
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "all-docs" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: all-docs/
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
