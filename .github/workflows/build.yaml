@@ -2,14 +2,9 @@ on:
   push:
     branches: [master]
 jobs:
-  build-oci-images:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.TOKEN }}
-          submodules: "recursive"
-
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
