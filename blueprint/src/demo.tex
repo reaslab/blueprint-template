@@ -1,0 +1,28 @@
+
+\tableofcontents
+\section{Introduction}
+
+
+\section{Example}
+Here you can use LaTex.
+
+\begin{lemma}\label{lemma:aux}
+	\lean{aux}
+	\leanok
+	Here is a description of the lemma.
+\end{lemma}
+\begin{proof}
+	\leanok
+	The proof is standard.
+\end{proof}
+
+\begin{theorem}\label{theorem:Ex}
+	\lean{Ex}
+	\leanok
+	\uses{lemma:aux}
+	Here is a description of the theorem.
+\end{theorem}
+\begin{proof}
+	\leanok
+	This proof depends on the lemma.
+\end{proof}
