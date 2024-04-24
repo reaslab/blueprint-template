@@ -17,4 +17,7 @@ end Nat
 
 lemma test : 1 + 1 = 2 := sorry
 
+
+theorem Test : 1 + 1 = 2 := test
+
 end List
