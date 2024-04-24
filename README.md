@@ -17,7 +17,7 @@ Then you can start to develop your project by modifying files in the `DemoProjec
 
 If you want to view the blueprint, you need to modify files in the `blueprint` directory, starting with `blueprint/src/content.tex`. You need to at least change the url in `\home` and `\dochome`. If you want to view it locally, change them into `localhost:8000` and `localhost:8000/doc`.
 
-Then come to the automation part. If you run `make analyze`, the python script will generate a `demo.tex` in `blueprint/src`. It will contain all the `theorem`, `lemma`, `def`, `structure`, `instance`, `inductive` and `class` statement in your project. The doc string will be filled in automatically, and `leanok` tag will be added for the ones without sorry. The dependencies will also be analyzed automatically. You can use this file to help fill the `content.tex`.
+Then come to the automation part. If you run `make analyze`, the python script will generate a `demo.tex` in `blueprint/src`. It will contain all the `theorem`, `lemma`, `def`, `structure`, `inductive` and `class` statement in your project. The doc string will be filled in automatically, and `leanok` tag will be added for the ones without sorry. The dependencies will also be analyzed automatically. You can use this file to help fill the `content.tex`.
 
 If you want to view the blueprint, you can run `make serve`. It will take a long time since it takes a while to build the doc page. If you can not redirect to the doc page from the blueprint, you may need to check if you change the url in `content.tex`.
 
