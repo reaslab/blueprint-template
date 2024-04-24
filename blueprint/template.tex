@@ -7,7 +7,7 @@
     ((* endif *))
     \lean{((( full_name )))}
     ((* if structure_dict.dependencies[full_name] *))
-    \uses{((( structure_dict.dependencies[full_name] )))}
+    \uses{((( ','.join(structure_dict.dependencies[full_name]) )))}
     ((* endif *))
     ((* if structure_dict.docs[full_name] *))
         ((( structure_dict.docs[full_name] )))
