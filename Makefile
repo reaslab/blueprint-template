@@ -1,6 +1,8 @@
 .DEFAULT_GOAL := all
 
-PROJECT = ./DemoProject
+PROJECT = DemoProject
+
+.PHONY: all build blueprint analyze serve
 
 .PHONY: all build blueprint analyze serve
 

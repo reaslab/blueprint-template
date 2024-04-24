@@ -160,6 +160,11 @@ class LeanProject:
                     dependency.append(self.names[lemma])
             self.dependencies[name] = dependency
 
+        for statement in self.statements.keys():
+            for lemma in self.dependencies[statement]:
+                if not self.statements[lemma][2]:
+                    self.statements[statement][2] = False
+                    break
 
 
 def generate_Tex(structure_dict : dict):
