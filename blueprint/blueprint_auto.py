@@ -11,7 +11,7 @@ keywords = [
     "/--",
     "class",
     "structure",
-    "instance",
+    #"instance",
     "inductive"
 ]
 
@@ -21,8 +21,8 @@ type_tex_dict = {
     "def": "definition",
     "lemma": "lemma",
     "class": "definition",
-    "sturcture": "definition",
-    "instance": "lemma",
+    "structure": "definition",
+    #"instance": "lemma",
     "inductive": "definition",
     "/--": "documentation"
 }
@@ -58,6 +58,7 @@ class LeanFile:
         self.get_full_name()
         self.find_sorry()
         self.find_docs()
+
     def find_namespace(self):
         # 构建正则表达式，匹配 "namespace xxx" 和 "end xxx" 模式
         namespace_pattern = r"namespace\s+(\w+)"
@@ -104,9 +105,11 @@ class LeanFile:
         self.slices.append((start, len(self.content)))
 
     def get_full_name(self):
-        for statement in filter(lambda s: s[1] != "/--", self.statements):
+        for statement in self.statements:
             namespace = []
             for name, idx in self.namespaces.items():
+                if statement[1] == "/--":
+                    break
                 if statement[0] > idx[0] and statement[0] < idx[1]:
                     namespace.append(name)
             namespace = sorted(namespace, key=lambda name: self.namespaces[name][0])
@@ -120,11 +123,16 @@ class LeanFile:
                 self.statements[i].append(True)
 
     def find_docs(self):
-        for i, statement in enumerate(self.statements):
-            if statement[1] == "/--":
-                docstring = self.__getitem__(self.statement2slice[statement[2]])
-                docstring = docstring[4:-2].strip()
-                self.docs[self.full_name[self.statements[i+1][2]]] = docstring
+        try:
+            for i, statement in enumerate(self.statements):
+                if statement[1] == "/--" and i < len(self.statements) - 1:
+                    docstring = self.__getitem__(self.statement2slice[statement[2]])
+                    end_index = docstring.find("-/")
+                    docstring = docstring[4:end_index].strip()
+                    self.docs[self.full_name[self.statements[i+1][2]]] = docstring
+        except:
+            print(self.path)
+            print(self.statements)
     def __len__(self):
         return len(self.slices)
 
