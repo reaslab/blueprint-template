@@ -2,6 +2,19 @@ import Mathlib.Tactic
 
 variable {a b : ℕ}
 
+namespace List
+/--
+this should be a doc string.
+-/
 lemma aux : a + b = b + a := add_comm a b
 
-theorem Ex : a + b = b + a := aux
+namespace Nat
+
+/--Here is a doc string-/
+theorem Ex:a + b = b + a := aux
+
+end Nat
+
+lemma test : 1 + 1 = 2 := sorry
+
+end List

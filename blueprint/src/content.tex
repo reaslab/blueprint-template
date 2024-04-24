@@ -14,25 +14,6 @@
 
 
 \section{Example}
-Here you can use LaTex.
+Here you can use LaTex. \cite{marcus}. You must cite something to make it work.
 
-\begin{lemma}\label{lemma:aux}
-	\lean{aux}
-	\leanok
-	Here is a description of the lemma.\cite{Samuel} Note that you must cite something to make blueprint work.
-\end{lemma}
-\begin{proof}
-	\leanok
-	The proof is standard.
-\end{proof}
-
-\begin{theorem}\label{theorem:Ex}
-	\lean{Ex}
-	\leanok
-	\uses{lemma:aux}
-	Here is a description of the theorem.
-\end{theorem}
-\begin{proof}
-	\leanok
-	This proof depends on the lemma.
-\end{proof}
+\input{demo}

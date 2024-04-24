@@ -1,21 +1,23 @@
 
-((* for statement in structure_dict.statements *))
-((* if statement.type_TeX in ["theorem", "lemma", "definition"] *))
-\begin{((( statement.type_TeX )))}\label{((( statement.name )))}
+((* for full_name, features in structure_dict.statements.items() *))
+((* if features[1] in ["theorem", "lemma", "definition"] *))
+\begin{((( features[1] )))}\label{((( full_name )))}
+    ((* if features[2] *))
     \leanok
-    \lean{((( statement.name )))}
-    ((* if statement.dependent_lemmas *))
-    \uses{((( statement.dependent_lemmas )))}
     ((* endif *))
-    ((* if statement.informal_statement *))
-        ((( statement.informal_statement )))
+    \lean{((( full_name )))}
+    ((* if structure_dict.dependencies[full_name] *))
+    \uses{((( structure_dict.dependencies[full_name] )))}
+    ((* endif *))
+    ((* if structure_dict.docs[full_name] *))
+        ((( structure_dict.docs[full_name] )))
     ((* else *))
-        See Lean statement.
+        No documentation.
     ((* endif *))
-\end{((( statement.type_TeX )))}
+\end{((( features[1] )))}
 
 ((* endif *))
-((* if statement.type_TeX in ["theorem", "lemma"] and not statement.sorry *))
+((* if features[1] in ["theorem", "lemma"] and features[2] *))
 \begin{proof}
     \leanok
 \end{proof}
