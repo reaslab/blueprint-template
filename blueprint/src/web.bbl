@@ -5,11 +5,10 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{Sam70}
+\begin{thebibliography}{Mar18}
 
-\bibitem[Sam70]{Samuel}
-Pierre Samuel, \emph{Algebraic theory of numbers}, Translated from the French
-  by Allan J. Silberger, Houghton Mifflin Co., Boston, Mass., 1970.
-  \MR{0265266}
+\bibitem[Mar18]{marcus}
+Daniel~A. Marcus, \emph{Number fields}, Universitext, Springer, Cham, 2018,
+  Second edition of [ MR0457396], With a foreword by Barry Mazur. \MR{3822326}
 
 \end{thebibliography}
