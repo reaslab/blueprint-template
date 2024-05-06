@@ -2,7 +2,7 @@
 
 PROJECT = DemoProject
 
-.PHONY: all build blueprint analyze serve
+.PHONY: all build blueprint blueprint-dev analyze serve
 
 all : build blueprint
 
@@ -12,11 +12,14 @@ build:
 blueprint: build
 	(cd blueprint && inv all && cp -r ../.lake/build/doc ./web/)
 
+blueprint-dev:
+	(cd blueprint && inv all)
+
 analyze:
 	(python3 blueprint/blueprint_auto.py -p ${PROJECT})
 
-serve: blueprint analyze
-	(cd blueprint/web && python3 -m http.server)
+serve: blueprint-dev analyze
+	(cd blueprint && inv serve)
 
 update:
 	lake -Kenv=dev update -R
