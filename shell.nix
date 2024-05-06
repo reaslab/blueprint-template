@@ -3,10 +3,8 @@ let
   pythonPackages = pkgs.python39Packages;
   tex = (pkgs.texlive.combine {
     inherit (pkgs.texlive)
-      scheme-small dvisvgm # for preview and export as html
+      scheme-small dvisvgm
       amsmath hyperref comment;
-    #(setq org-latex-compiler "lualatex")
-    #(setq org-preview-latex-default-process 'dvisvgm)
   });
 in pkgs.mkShell {
   name = "python-venv";
