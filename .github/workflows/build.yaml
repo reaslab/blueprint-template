@@ -23,8 +23,23 @@ jobs:
         with:
           fetch-depth: 2
           lfs: true
+
+      - name: Cache mathlib docs
+        uses: actions/cache@v3
+        with:
+          path: |
+            .lake/build/doc/Init
+            .lake/build/doc/Lake
+            .lake/build/doc/Lean
+            .lake/build/doc/Batteries
+            .lake/build/doc/Mathlib
+            .lake/build/doc/declarations
+          key: MathlibDoc-${{ hashFiles('lake-manifest.json') }}
+          restore-keys: |
+            MathlibDoc-
       - run: |
           nix develop --command make blueprint
+
       - name: Fix permissions
         run: |
           chmod -c -R +rX "blueprint/web/" | while read line; do
