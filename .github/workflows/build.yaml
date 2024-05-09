@@ -16,7 +16,7 @@ jobs:
         with:
           extra-conf: |
             accept-flake-config = true
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      #- uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
       - name: Checkout Project
         uses: actions/checkout@v3
@@ -34,6 +34,7 @@ jobs:
             .lake/build/doc/Batteries
             .lake/build/doc/Mathlib
             .lake/build/doc/declarations
+            !.lake/build/doc/declarations/declaration-data-DemoProject*
           key: MathlibDoc-${{ hashFiles('lake-manifest.json') }}
           restore-keys: |
             MathlibDoc-
