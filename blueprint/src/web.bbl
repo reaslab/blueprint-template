@@ -5,10 +5,6 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{Mar18}
-
-\bibitem[Mar18]{marcus}
-Daniel~A. Marcus, \emph{Number fields}, Universitext, Springer, Cham, 2018,
-  Second edition of [ MR0457396], With a foreword by Barry Mazur. \MR{3822326}
+\begin{thebibliography}{}
 
 \end{thebibliography}
