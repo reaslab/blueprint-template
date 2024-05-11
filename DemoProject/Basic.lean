@@ -1,12 +1,10 @@
-import Mathlib.Tactic
-
-variable {a b : ℕ}
+variable {a b : Nat}
 
 namespace List
 /--
 this should be a doc string.
 -/
-lemma aux : a + b = b + a := add_comm a b
+theorem aux : a + b = b + a := Nat.add_comm a b
 
 namespace Nat
 
@@ -15,7 +13,7 @@ theorem Ex:a + b = b + a := aux
 
 end Nat
 
-lemma test : 1 + 1 = 2 := sorry
+theorem test : 1 + 1 = 2 := sorry
 
 
 
