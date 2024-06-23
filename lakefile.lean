@@ -9,7 +9,7 @@ lean_lib «DemoProject» where
   -- add library configuration options here
 
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4.git"
+  "https://github.com/leanprover-community/mathlib4.git" @ "master"
 
 
 meta if get_config? env = some "dev" then -- dev is so not everyone has to build it
