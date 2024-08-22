@@ -7,7 +7,7 @@ PROJECT = DemoProject
 all : build blueprint
 
 build:
-	(lake exe cache get && lake build && DOCGEN_SRC="vscode" lake build ${PROJECT}:docs)
+	(lake exe cache get && lake build && lake build ${PROJECT}:docs)
 
 build-print:
 	(cd blueprint && mkdir -p print && cd src && xelatex -output-directory=../print print.tex)
